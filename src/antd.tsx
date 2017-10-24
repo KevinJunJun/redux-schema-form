@@ -409,9 +409,10 @@ class ArrayFieldRenderer extends React.Component<any,any>{
                         children = props.fieldSchema.getChildren(props.fields.get(i)).filter(x=>x);
                     return <div key={i} className="array-field-child">
                         <div className="delete-button">
-                            <Tooltip placement="topLeft" title="删除" arrowPointAtCenter>
+                            {props.disabled ||<Tooltip placement="topLeft" title="删除" arrowPointAtCenter>
                                 <Icon type="minus" className="icon-minus" style={{cursor:"pointer"}} onClick={() => props.fields.remove(i)}/>
                             </Tooltip>
+                            }
 
                         </div>
                         {
@@ -421,9 +422,10 @@ class ArrayFieldRenderer extends React.Component<any,any>{
                 })
             }
             <div className="add-button">
-                <Tooltip placement="topLeft" title="添加" arrowPointAtCenter>
+                {props.disabled ||<Tooltip placement="topLeft" title="添加" arrowPointAtCenter>
                     <Icon type="plus"  className="icon-plus" style={{cursor:"pointer"}} onClick={() => props.fields.push()}/>
                 </Tooltip>
+                }
             </div>
         </div>
     }
